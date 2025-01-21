@@ -21,6 +21,12 @@ const figury = [
 function App() {
   const [f, setF] = useState(figury);
 
+  function dodaj(nr)
+  {
+    let ft = f.slice();
+    ft[nr].liczba++;
+    setF(ft);
+  }
   function kopiuj()
   {
     let figury2 = [];
@@ -51,7 +57,12 @@ function App() {
         <input type='checkbox' defaultChecked onClick={kopiuj} id='trojkat'/> trójkąt
         <input type='checkbox' defaultChecked onClick={kopiuj} id='kwadrat'/> kwadrat
       </p>
-      {f.map((e) => <Figura key={e.id} f={e} />)}
+      <div className='row'>
+        
+          {f.map((e) => <Figura key={e.id} f={e} fun={dodaj}/>)}
+      
+      </div>
+      
     </div>
   );
 }
